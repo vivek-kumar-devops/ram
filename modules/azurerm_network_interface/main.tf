@@ -1,8 +1,8 @@
 resource "azurerm_network_interface" "asd" {
-  name=var.nic_name
-   resource_group_name = var.resource_group_name
-   location=var.location_name
-   
+  name                = var.nic_name
+  resource_group_name = var.resource_group_name
+  location            = var.location_name
+
 
   ip_configuration {
     name                          = "internal"
@@ -10,16 +10,16 @@ resource "azurerm_network_interface" "asd" {
     private_ip_address_allocation = "Dynamic"
   }
 }
-resource "azurerm_linux_virtual_machine" "vms"{
+resource "azurerm_linux_virtual_machine" "vms" {
 
-    name= var.vm1_name
-    resource_group_name = var.resource_group_name
-   location=var.location_name
-size                = "Standard_DC1s_v3"
+  name                = var.vm1_name
+  resource_group_name = var.resource_group_name
+  location            = var.location_name
+  size                = "Standard_DC1s_v3"
 
   admin_username = "azureuser"
 
-  network_interface_ids = [   azurerm_network_interface.asd.id]
+  network_interface_ids = [azurerm_network_interface.asd.id]
 
   admin_password                  = "Password@1234"
   disable_password_authentication = false
@@ -36,5 +36,5 @@ size                = "Standard_DC1s_v3"
     version   = "latest"
   }
 }
-  
+
 
