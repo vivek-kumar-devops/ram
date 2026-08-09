@@ -17,7 +17,7 @@ module "subnet" {
   resource_group_name = var.resource_group
   reenu_name          = var.tina_name
 }
-module "vm"{
+module "vm" {
   depends_on          = [module.subnet]
   source              = "../modules/azurerm_network_interface"
   nic_name            = var.nic1_name
@@ -25,6 +25,6 @@ module "vm"{
   location_name       = var.location_name
   snet_id             = module.subnet.subnet_id
 
-  vm1_name            = var.vm1_name
-   
+  vm1_name = var.vm1_name
+
 }
